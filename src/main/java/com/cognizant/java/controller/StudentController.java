@@ -14,24 +14,24 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cognizant.java.entity.Student;
 import com.cognizant.java.service.StudentService;
 @RestController
-@RequestMapping("/student")
+@RequestMapping(value="/student")
 public class StudentController {
 	
 	@Autowired
 	private StudentService studentService;
 	
-	@GetMapping("/test")
+	@GetMapping(value="/test")
 	public String test() {
 		return "hello testd application";
 		
 	}
 	
-	@PostMapping("/save")
+	@PostMapping(value="/save")
 	public ResponseEntity<Student> saveStudent(@RequestBody Student student){
 		Student student1=studentService.saveStudentDetails(student);
 		return new ResponseEntity<>(student1,HttpStatus.CREATED);
 	}
-	@GetMapping("/findAll")
+	@GetMapping(value="/findAll")
 	public ResponseEntity<Student> findAllStudent(){
 		List<Student> allStudents=studentService.findAllStudentDetails();
 		return new ResponseEntity(allStudents,HttpStatus.OK);
